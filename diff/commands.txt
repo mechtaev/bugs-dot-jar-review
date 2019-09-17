@@ -1,0 +1,35 @@
+# create diff folder
+mkdir diff
+
+# find all files that end with .diff and move to the diff folder
+find . -name "*diff" -exec cp -n {} diff \;
+
+cd diff
+
+# create project folders
+for r in `cat bugs-dot-jar-subjects.txt`; do mkdir "$r"; done
+
+# move diffs of a specific project to the project's folder
+find . -name "accumulo*" -exec mv {} accumulo \;
+
+# find the number of the files in the folder
+ls accumulo | wc -l
+
+# random selection of diffs per project
+ls accumulo | shuf -n 20
+
+
+Stratified sampling
+			
+accumulo	98	8	20
+camel		147	13	33
+commons-math	147	13	33
+flink		70	6	15
+jackrabbit-oak	278	24	60
+logging-log4j2	81	7	18
+maven		48	4	10
+wicket		289	25	63
+Total		1158	100	252
+
+
+
