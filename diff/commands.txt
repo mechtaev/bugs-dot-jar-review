@@ -31,5 +31,6 @@ maven		48	4	10
 wicket		289	25	63
 Total		1158	100	252
 
-
+# create links for the diffs in the sample (using awk we replace .diff.yml to .yml)
+for s in `cat bugs-dot-jar-subjects.txt`; do for r in `cat rnd-sample.txt`; do url="https://github.com/mechtaev/bugs-dot-jar-review/blob/master/$s-$r"; echo "$s,$r,${url},${url}.yml" | awk '{gsub(/.diff.yml/,".yml")}1' >> bugs-dot-jar-review.csv; done; done
 
